@@ -1,3 +1,5 @@
+require("dotenv").config();
+console.log(process.env.API_KEY);
 // Requiring necessary npm packages
 const express = require("express");
 const session = require("express-session");

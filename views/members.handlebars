@@ -1,28 +1,64 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/logout">
-        Logout
-      </a>
+{{!-- <div class="container"><img class="background" src="../assets/chicago.jpg"/> --}}
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/logout">
+          Logout
+        </a>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <h2>Welcome <span class="member-name"></span></h2>
+      </div>
     </div>
   </div>
-</nav>
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <h2>Welcome <span class="member-name"></span></h2>
+
+  <h2 class="desLabel">Choose your destination!</h2>
+  <div class="dropdown multi-level">
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle dropdownBtn" type="button" id="dropdownMenuButton"
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        States and Cities
+      </button>
+      <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+        <li class="dropdown-divider"></li>
+        {{!-- handlebars dropdown --}}
+        {{#each states}}
+        <li class="dropdown-submenu">
+          <a class="dropdown-item" tabindex="-1" href="#">{{ state }}</a>
+          <ul class="dropdown-menu">
+            {{#each cities}}
+            <li class="dropdown-item"><a  href="#">{{ this }}</a></li>
+            {{/each}}
+          </ul>
+        </li>
+        {{/each}}
+      </ul>
     </div>
+  </div>
+{{!-- calendar --}}
+<div class="row calendars">
+  <div class="form-group col-md-6">
+    <form action="/action_page.php" class="ml-auto start">
+      <label for="travelStartDate">Start Date:</label>
+      <input type="date" id="travelStartDate" name="travelStartDate">
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+  <div class="form-group col-md-6">
+    <form action="/action_page.php" class="end">
+      <label for="travelEndDate">End Date:</label>
+      <input type="date" id="travelEndDate" name="travelEndDate">
+      <input type="submit" value="Submit">
+    </form>
   </div>
 </div>
 
-<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown button
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Illinois</a>
-    <a class="dropdown-item" href="#">Florida</a>
-    <a class="dropdown-item" href="#">California</a>
-    <a class="dropdown-item" href="#">New York</a>
-  </div>
-</div>
+
+
+
+
+<script type="text/javascript" src="js/members.js"></script>

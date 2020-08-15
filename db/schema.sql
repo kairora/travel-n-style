@@ -1,12 +1,12 @@
-CREATE database travelINstyle_db;
-USE travelINstyle_db;
+CREATE database travelNstyle_db;
+USE travelNstyle_db;
 
 CREATE TABLE destination 
 (
-    id init NOT NULL AUTO INCREMENT,
+    id INT NOT NULL AUTO_INCREMENT,
     destination varchar (200) NOT NULL,
     address varchar(200) NOT NULL,
-    PRIMARY KEY (ID),
+    PRIMARY KEY (ID)
 
 
 )

@@ -1,3 +1,4 @@
 node_modules/
 .env
 .DS_Store
+http://api.tripadvisor.com/api/partner/2.0/location/89575?key

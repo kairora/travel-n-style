@@ -1,9 +1,15 @@
+
 form.signup,
 form.login {
   margin-top: 50px;
 }
 
-
+.card{
+  margin: 0 auto;
+  float: none;
+  margin-bottom:10px ;
+  
+}
 .desLabel {
   margin-top: 200px;
   text-align: center;

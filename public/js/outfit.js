@@ -61,7 +61,7 @@ $(document).ready(() => {
         //declaring variables
         let queryUrl = "https://api.openweathermap.org/data/2.5/weather?q=";
         let queryUrlForcast = "https://api.openweathermap.org/data/2.5/onecall?lat=";
-        let appID = "0a336261969aedd3330885cbe45f26cc";
+        
 
         if (city != '') {
         

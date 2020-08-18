@@ -1,11 +1,7 @@
 {
   "development": {
     "username": "root",
-<<<<<<< HEAD
-    "password": "Code1289!",
-=======
     "password": "root",
->>>>>>> 8995c6acd2739e45fd6be3ce964795ff25a32fdb
     "database": "travelNstyle_db",
     "host": "127.0.0.1",
     "dialect": "mysql"

@@ -1,0 +1,30 @@
+h1{
+    text-align: center;
+    color: white;
+}
+body{
+    background-image: url("../assets/images/city/travel_member.jpg");
+    background-size: cover;
+}
+.container{
+    margin-top: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.card{
+  background-color: blanchedalmond;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.card-header{
+  background-color: royalblue;
+  color: white;
+}
+.w3-panel.w3-border{
+    color: white;
+    font-size: 24px;
+    font-weight: bolder;
+    font-style: oblique;
+}

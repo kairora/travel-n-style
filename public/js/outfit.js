@@ -1,4 +1,16 @@
 /* eslint-disable */
+$(document).ready(() => {
+  //var gender; 
+
+  // This file just does a GET request to figure out which user is logged in
+  // and updates the HTML on the page
+  var gender = $.get("/api/user_data").then(data => {
+    console.log(data.gender);
+  });
+  console.log(gender);
+});
+
+
 let womensAccessories = ['/images/womens/accessory1.png', '/images/womens/accessory2.png', '/images/womens/accessory3.png', '/images/womens/accessory4.png', '/images/womens/accessory5.png'];
 
 let mensAccessories = ['/images/mens/accessory1.png', '/images/mens/accessory2.png', '/images/mens/accessory3.png', '/images/mens/accessory4.png', '/images/mens/accessory5.png'];
@@ -50,6 +62,9 @@ let menTeeIndex = Math.floor((Math.random() * mensTees.length));
 
 
 $(document).ready(() => {
+  var gender = $.get("/api/user_data").then(data => {
+    console.log(data.gender);
+  
   //adding event listener to search button
   $("#city-btn").on("click", ((event) => {
     event.preventDefault();
@@ -60,23 +75,6 @@ $(document).ready(() => {
       method: "GET",
     }).then(function (response) {
       console.log(response);
-
-      if (response.main.temp >= 69 && gender == female) {
-        $('#topImg').append('<img src=' + '"' + womensTees[womenTeeIndex] + '"' + 'height="100" width="100">');
-        $('#bottomImg').append('<img src=' + '"' + womensShorts[womenShortIndex] + '"' + 'height="100" width="100">');
-        $('#shoeImg').append('<img src="/images/womens/shoe2.png" height="100" width="100">');
-        $('#top2Img').append('<img src=' + '"' + womensTees[womenTee2Index] + '"' + 'height="100" width="100">');
-        $('#bottom2Img').append('<img src=' + '"' + womensShorts[womenShort2Index] + '"' + 'height="100" width="100">');
-        $('#jacketImg').append('<img src="/images/womens/jacket3.png" height="100" width="100">')
-        $('#acc1').append('<img src="/images/womens/accessory17.png" height="50" width="50">')
-        $('#acc2').append('<img src="/images/womens/accessory3.png" height="50" width="50">')
-        $('#acc3').append('<img src="/images/womens/accessory16.png" height="50" width="50">')
-      }
-    
-    });
-  }));
-  // function to make ajax call to get data
-});
 
       let min = Math.round(response.main.temp_min);
       $('#tempLow').text(min + 'º');
@@ -89,6 +87,22 @@ $(document).ready(() => {
       $('.weatherImg').attr('id', 'icon');
       let description = response.weather[0].main;
       $('#description').text(description);
+      console.log(min);
+
+      if (response.main.temp >= 69 && data.gender == "female") {
+        $('#topImg').append('<img src="/images/womens/tee1.png" height="100" width="100">');
+        $('#bottomImg').append('<img src="/images/womens/dress1.png "height="100" width="100">');
+      
+        console.log(data.gender);
+      }
+    
+    });
+  }));
+});
+  // function to make ajax call to get data
+});
+
+      
       
       // let gender = 
 

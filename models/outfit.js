@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Outfit.associate = function(models) {
-    Outfit.belongsTo(models.Trip, {
+    Outfit.belongsTo(models.User, {
       foreignKey: {
         allowNull: false
       }

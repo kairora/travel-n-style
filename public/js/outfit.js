@@ -127,6 +127,33 @@ let womenTeeIndex = Math.floor(Math.random() * womensTees.length);
 let menTeeIndex = Math.floor(Math.random() * mensTees.length);
 
 $(document).ready(() => {
+  const m = moment();
+
+  function displayWeather(response) {
+    // converts timezone to UTC offset in minutes
+    const UTC = response.timezone / 60;
+    // inputs UTC offset and outputs a date stored in let
+    const date = m.utcOffset(UTC).format("M/DD/YYYY");
+    // displays city name + date
+    $(".currentcity").text($("#city").val() + " " + "(" + date + ")");
+    // icon
+    const icon = $("<img>").attr(
+      "src",
+      "http://openweathermap.org/img/w/" +
+        response.current.weather[0].icon +
+        ".png"
+    );
+    $(".currentcity").append(icon);
+    // temperature display and set into localStorage
+    $("#ctemp").text(
+      "Temperature: " + response.current.temp.toFixed(1) + " °F"
+    );
+    // humidity display and set into localStorage
+    $("#chumid").text("Humidity: " + response.current.humidity + "%");
+    // wind speed display and set into localStorage
+    $("#cwind").text("Wind Speed: " + response.current.wind_speed + " MPH");
+  }
+
   //adding event listener to search button
   $("#city-btn").on("click", event => {
     event.preventDefault();
@@ -139,7 +166,7 @@ $(document).ready(() => {
       method: "GET"
     }).then(responsefc => {
       console.log(responsefc);
+      displayWeather(responsefc);
     });
   });
-  // function to make ajax call to get data
 });

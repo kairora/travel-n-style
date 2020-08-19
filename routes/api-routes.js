@@ -52,7 +52,10 @@ module.exports = function (app) {
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
         email: req.user.email,
-        id: req.user.id
+        id: req.user.id,
+        firstname: req.user.firstname,
+        lastname: req.user.lastname,
+        gender: req.user.gender
       });
     }
   });
@@ -69,11 +72,9 @@ module.exports = function (app) {
       axios.get(queryUrl + city + "&units=imperial" + "&APPID=" + appID)
         .then(function (response) {
           console.log(response);
-          axios.get(queryUrlForcast + response.data.coord.lat + "&lon=" + response.data.coord.lon + "&units=imperial" + "&APPID=" + appID).then(function (responsefc) {
-           res.json(responsefc.data) 
-          console.log(responsefc);
+          res.json(response.data);
         });
-      });
+
     }
   });
 };

@@ -1,8 +1,10 @@
+/* eslint-disable */
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
+const axios = require("axios");
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
@@ -18,9 +20,13 @@ module.exports = function(app) {
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
   app.post("/api/signup", (req, res) => {
+    console.log(req.body);
     db.User.create({
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
+      gender: req.body.gender
     })
       .then(() => {
         res.redirect(307, "/api/login");
@@ -47,6 +53,26 @@ module.exports = function(app) {
       res.json({
         email: req.user.email,
         id: req.user.id
+      });
+    }
+  });
+  app.get("/api/weather", (req, res) => {
+    let city =req.query.city;
+    //declaring variables
+    let queryUrl = "https://api.openweathermap.org/data/2.5/weather?q=";
+    let queryUrlForcast = "https://api.openweathermap.org/data/2.5/onecall?lat=";
+
+    let appID = process.env.WEATHER_API_KEY;
+    console.log(appID);
+
+    if (city !== "") {
+      axios.get(queryUrl + city + "&units=imperial" + "&APPID=" + appID)
+        .then(function (response) {
+          console.log(response);
+          axios.get(queryUrlForcast + response.data.coord.lat + "&lon=" + response.data.coord.lon + "&units=imperial" + "&APPID=" + appID).then(function (responsefc) {
+           res.json(responsefc.data) 
+          console.log(responsefc);
+        });
       });
     }
   });

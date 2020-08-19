@@ -45,7 +45,7 @@ $(document).ready(() => {
     const queryUrl = "https://api.openweathermap.org/data/2.5/forecast?q=";
     const queryUrlForecast =
       "https://api.openweathermap.org/data/2.5/onecall?lat=";
-    const appID = "";
+    const appID = process.env.WEATHER_API_KEY;
 
     if (city !== "") {
       $.ajax({

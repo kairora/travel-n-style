@@ -1,0 +1,21 @@
+body{
+    background-image: url("../assets/images/city/login_background.jpg");
+    background-size: cover;
+}
+
+.container{
+    margin-top: 200px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    text-align: center;
+}
+.card{
+  background-color: aliceblue;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.card-header{
+    background-color: royalblue;
+    color: white;
+  }

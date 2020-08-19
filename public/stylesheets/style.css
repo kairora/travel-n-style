@@ -1,11 +1,10 @@
-.carousel {
-  position: absolute;
-}
-nav {
-  position: relative;
+/*body{
+  background-image: url("../assets/images/city/travel_background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: ivory;
   
-}
-
+}*/
 form.signup,
 form.login {
   margin-top: 50px;

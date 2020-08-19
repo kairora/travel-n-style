@@ -89,7 +89,7 @@ $(document).ready(() => {
       $('#description').text(description);
       console.log(min);
 
-      if (response.main.temp >= 75 && data.gender == "female") {
+      if (response.main.temp >= 70 && data.gender == "female") {
         $('#top1Img').append('<img src="../assets/images/womens/tee1.png" height="200" width="200">')
         $('#top2Img').append('<img src="../assets/images/womens/tee2.png" height="200" width="200">')
         $('#top3Img').append('<img src="../assets/images/womens/dress1.png" height="200" width="200">')
@@ -103,7 +103,7 @@ $(document).ready(() => {
         $('#acc2Img').append('<img src="../assets/images/womens/accessory2.png" height="200" width="200">')
         $('#acc3Img').append('<img src="../assets/images/womens/accessory3.png" height="200" width="200">')
 
-      }else if (response.main.temp >= 75 && data.gender == "male") {
+      }else if (response.main.temp >= 70 && data.gender == "male") {
         $('#top1Img').append('<img src="../assets/images/mens/tee1.png" height="200" width="200">')
         $('#top2Img').append('<img src="../assets/images/mens/tee2.png" height="200" width="200">')
         $('#top3Img').append('<img src="../assets/images/mens/tee3.png" height="200" width="200">')
@@ -116,6 +116,34 @@ $(document).ready(() => {
         $('#acc1Img').append('<img src="../assets/images/mens/accessory1.png" height="200" width="200">')
         $('#acc2Img').append('<img src="../assets/images/mens/accessory2.png" height="200" width="200">')
         $('#acc3Img').append('<img src="../assets/images/mens/accessory3.png" height="200" width="200">')
+      }
+      else if (response.main.temp >= 40 && data.gender == "male") {
+        $('#top1Img').append('<img src="../assets/images/mens/sweater1.png" height="200" width="200">')
+        $('#top2Img').append('<img src="../assets/images/mens/sweater2.png" height="200" width="200">')
+        $('#top3Img').append('<img src="../assets/images/mens/sweater3.png" height="200" width="200">')
+        $('#bottom1Img').append('<img src="../assets/images/mens/pant1.png" height="200" width="200">')
+        $('#bottom2Img').append('<img src="../assets/images/mens/pant2.png" height="200" width="200">')
+        $('#bottom3Img').append('<img src="../assets/images/mens/pant3.png" height="200" width="200">')
+        $('#shoe1Img').append('<img src="../assets/images/mens/shoe1.png" height="200" width="200">')
+        $('#shoe2Img').append('<img src="../assets/images/mens/shoe2.png" height="200" width="200">')
+        $('#shoe3Img').append('<img src="../assets/images/mens/shoe3.png" height="200" width="200">')
+        $('#acc1Img').append('<img src="../assets/images/mens/accessory1.png" height="200" width="200">')
+        $('#acc2Img').append('<img src="../assets/images/mens/accessory2.png" height="200" width="200">')
+        $('#acc3Img').append('<img src="../assets/images/mens/accessory3.png" height="200" width="200">')
+
+      } else if (response.main.temp >= 40 && data.gender == "female") {
+        $('#top1Img').append('<img src="../assets/images/womens/sweater1.png" height="200" width="200">')
+        $('#top2Img').append('<img src="../assets/images/womens/sweater2.png" height="200" width="200">')
+        $('#top3Img').append('<img src="../assets/images/womens/sweater3.png" height="200" width="200">')
+        $('#bottom1Img').append('<img src="../assets/images/womens/pant1.png" height="200" width="200">')
+        $('#bottom2Img').append('<img src="../assets/images/womens/pant2.png" height="200" width="200">')
+        $('#bottom3Img').append('<img src="../assets/images/womens/pant3.png" height="200" width="200">')
+        $('#shoe1Img').append('<img src="../assets/images/womens/shoe1.png" height="200" width="200">')
+        $('#shoe2Img').append('<img src="../assets/images/womens/shoe2.png" height="200" width="200">')
+        $('#shoe3Img').append('<img src="../assets/images/womens/shoe3.png" height="200" width="200">')
+        $('#acc1Img').append('<img src="../assets/images/womens/accessory1.png" height="200" width="200">')
+        $('#acc2Img').append('<img src="../assets/images/womens/accessory2.png" height="200" width="200">')
+        $('#acc3Img').append('<img src="../assets/images/womens/accessory3.png" height="200" width="200">')
       }
     
     });

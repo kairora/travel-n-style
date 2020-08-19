@@ -21,7 +21,7 @@ let womenPantIndex = Math.floor((Math.random() * womensPants.length));
 let menPantIndex = Math.floor((Math.random() * mensPants.length));
 
 let womensShoes = ['/images/womens/shoe1.png', '/images/womens/shoe2.png', '/images/womens/shoe3.png', '/images/womens/shoe4.png', '/images/womens/shoe5.png'];
-let mensShoes = ['/images/mens/shoe1.png', '/images/mens/shoe2.png', '/images/mens/shoe3.png', '/images/mens/shoe4.png','/images/mens/shoe5.png'];
+let mensShoes = ['/images/mens/shoe1.png', '/images/mens/shoe2.png', '/images/mens/shoe3.png', '/images/mens/shoe4.png', '/images/mens/shoe5.png'];
 
 let womenShoeIndex = Math.floor((Math.random() * womensShoes.length));
 let menShoeIndex = Math.floor((Math.random() * mensShoes.length));
@@ -49,39 +49,18 @@ let menTeeIndex = Math.floor((Math.random() * mensTees.length));
 
 
 $(document).ready(() => {
-    //adding event listener to search button
-    $(".city-btn").on("click", (() => {
-        $("#error").text('');
-        let city = $("#city").val().toUpperCase();
-        showWeather(city);
-    })
+  //adding event listener to search button
+  $("#city-btn").on("click", ((event) => {
+    event.preventDefault();
+    $("#error").text('');
+    let city = $("#city").val().toUpperCase();
+    $.ajax({
+      url: "/api/weather?city=" + city,
+      method: "GET",
+    }).then(function (responsefc) {
+      console.log(responsefc);
+    });
+  }));
+  // function to make ajax call to get data
+});
 
-    // function to make ajax call to get data
-    function showWeather(city) {
-        //declaring variables
-        let queryUrl = "https://api.openweathermap.org/data/2.5/weather?q=";
-        let queryUrlForcast = "https://api.openweathermap.org/data/2.5/onecall?lat=";
-        
-
-        if (city != '') {
-        
-            $.ajax({
-                url: queryUrl + city + "&units=imperial" + "&APPID=" + appID,
-                method: "GET",
-            }).then(function (response) {
-                console.log(response);
-
-                $.ajax({
-                    url: queryUrlForcast + latitude + "&lon=" + longitude + "&units=imperial" + "&APPID=" + appID,
-                    method: "GET",
-                }).then(function (responsefc) {
-                    console.log(responsefc);
-                })
-            })
-
-        }
-        else {
-            $("#error").text("Please enter a city name");
-        }
-    })
-})

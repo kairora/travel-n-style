@@ -27,7 +27,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     gender: {
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: false
     }
   });
   User.associate = function(models) {

@@ -1,3 +1,4 @@
+/* eslint-disable */
 let womensAccessories = ['/images/womens/accessory1.png', '/images/womens/accessory2.png', '/images/womens/accessory3.png', '/images/womens/accessory4.png', '/images/womens/accessory5.png'];
 
 let mensAccessories = ['/images/mens/accessory1.png', '/images/mens/accessory2.png', '/images/mens/accessory3.png', '/images/mens/accessory4.png', '/images/mens/accessory5.png'];
@@ -57,10 +58,38 @@ $(document).ready(() => {
     $.ajax({
       url: "/api/weather?city=" + city,
       method: "GET",
-    }).then(function (responsefc) {
-      console.log(responsefc);
+    }).then(function (response) {
+      console.log(response);
+
+      if (response.main.temp >= 69 && gender == female) {
+        $('#topImg').append('<img src=' + '"' + womensTees[womenTeeIndex] + '"' + 'height="100" width="100">');
+        $('#bottomImg').append('<img src=' + '"' + womensShorts[womenShortIndex] + '"' + 'height="100" width="100">');
+        $('#shoeImg').append('<img src="/images/womens/shoe2.png" height="100" width="100">');
+        $('#top2Img').append('<img src=' + '"' + womensTees[womenTee2Index] + '"' + 'height="100" width="100">');
+        $('#bottom2Img').append('<img src=' + '"' + womensShorts[womenShort2Index] + '"' + 'height="100" width="100">');
+        $('#jacketImg').append('<img src="/images/womens/jacket3.png" height="100" width="100">')
+        $('#acc1').append('<img src="/images/womens/accessory17.png" height="50" width="50">')
+        $('#acc2').append('<img src="/images/womens/accessory3.png" height="50" width="50">')
+        $('#acc3').append('<img src="/images/womens/accessory16.png" height="50" width="50">')
+      }
+    
     });
   }));
   // function to make ajax call to get data
 });
 
+      let min = Math.round(response.main.temp_min);
+      $('#tempLow').text(min + 'º');
+      let max = Math.round(response.main.temp_max);
+      $('#tempHi').text(max + 'º');
+      let current = Math.round(response.main.temp);
+      $('#temp').text(current);
+      $('#city').text(response.name);
+      $('.weatherImg').attr('src', 'http://openweathermap.org/img/w/'+response.weather[0].icon+'.png')
+      $('.weatherImg').attr('id', 'icon');
+      let description = response.weather[0].main;
+      $('#description').text(description);
+      
+      // let gender = 
+
+      

@@ -69,11 +69,9 @@ module.exports = function (app) {
       axios.get(queryUrl + city + "&units=imperial" + "&APPID=" + appID)
         .then(function (response) {
           console.log(response);
-          axios.get(queryUrlForcast + response.data.coord.lat + "&lon=" + response.data.coord.lon + "&units=imperial" + "&APPID=" + appID).then(function (responsefc) {
-           res.json(responsefc.data) 
-          console.log(responsefc);
+          res.json(response.data);
         });
-      });
+
     }
   });
 };

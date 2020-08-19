@@ -15,6 +15,8 @@
   </div>
 
   <div class="jumbotron">
+    <div class="row">
+      <div class="col-md-6">
     <h1>Travel N Style</h1>
     <br>
     <h4>Select a city</h4>
@@ -29,7 +31,21 @@
         </div>
       </form>
     </panel>
+    {{!-- Current Day Weather Data --}}
+    <div class="col-md-6">
+      <section>
+        <div class="card m-2">
+          <h2 class="currentcity m-4">></h2>
+          <p class="current ml-4" id="ctemp">
+          <p class="current ml-4" id="chumid"></p>
+          <p class="current ml-4" id="cwind"></p>
+          <p class="current ml-4" id="cuv"> <span class="cSpan"></span></p>
+        </div class="card">
+      </section> 
+    </div><!-- end of current day -->
   </div>
+
+
   <div class="row">
     {{!-- this is for top --}}
     <div id="carouselExampleIndicators top" class="carousel slide card" data-ride="carousel">
@@ -73,7 +89,7 @@
           <img id="bottom2Img" class="d-block w-100" width="200px" height="200px" alt="pant">
         </div>
         <div class="carousel-item">
-          <img id="bottom3Img" class="d-block w-100" width="200px" height="200px" alt="pant">
+          <img id="bottom3Img" class="d-block w-100" width="200px" height="200px" alt="pant"
         </div>
       </div>
       <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -142,9 +158,29 @@
     
   </div>
 </div>
+{{!-- calendar --}}
+<div class="row calendars">
+  <div class="form-group col-md-6">
+    <form action="/action_page.php" class="start">
+      <label for="travelStartDate">Start Date:</label>
+      <input type="date" id="travelStartDate" name="travelStartDate">
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+  <div class="form-group col-md-6">
+    <form action="/action_page.php" class="end">
+      <label for="travelEndDate">End Date:</label>
+      <input type="date" id="travelEndDate" name="travelEndDate">
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+</div>
 
-
+</div>
+</div>
+</div>
+</div>
+</div>
 
 <script type="text/javascript" src="js/members.js"></script>
-
 <script type="text/javascript" src="js/outfit.js"></script>

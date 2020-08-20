@@ -33,6 +33,7 @@ module.exports = function (app) {
         res.status(401).json(err);
       });
   });
+  //post route outfit table
 app.post("/api/fav",(req,res) =>{
   console.log(req.body)
   db.Outfit.create(req.body).then(sponse=>{
@@ -42,11 +43,27 @@ app.post("/api/fav",(req,res) =>{
     res.json({ok:true, sponse})
   }).catch(err=>{throw err})
 });
+
+// Route for getting some data about saved outfit to be used client side
+app.get("/api/outfit_data", (req, res) => {
+  if (!req.user) {
+    res.json({});
+  } else {
+    res.json({
+      top: req.outfits.top,
+      bottom: req.outfits.bottom,
+    });
+  }
+});
+
+
   // Route for logging user out
   app.get("/logout", (req, res) => {
     req.logout();
     res.redirect("/");
   });
+
+
   // Route for getting some data about our user to be used client side
   app.get("/api/user_data", (req, res) => {
     if (!req.user) {
@@ -64,6 +81,7 @@ app.post("/api/fav",(req,res) =>{
       });
     }
   });
+  
   app.get("/api/weather", (req, res) => {
     let city =req.query.city;
     //declaring variables

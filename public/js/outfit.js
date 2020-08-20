@@ -169,6 +169,8 @@ let womenTeeIndex = Math.floor(Math.random() * womensTees.length);
 let menTeeIndex = Math.floor(Math.random() * mensTees.length);
 
 
+
+
 $(document).ready(() => {
   var gender = $.get("/api/user_data").then(data => {
     console.log(data.gender);

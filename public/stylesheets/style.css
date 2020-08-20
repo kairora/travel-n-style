@@ -13,15 +13,28 @@ form.login {
   color: white;
 }
 
-.card{
+.jumbotron.card {
   margin: 0 auto;
   float: none;
-  margin-top:45vh;
-  margin-bottom:110px;
+  /* margin-top:45vh;
+  margin-bottom:110px; */
   width: 40vw;
   
 }
-
+#carouselExampleIndicators {
+  width: 15vw;
+}
+.carousel {
+  display: inline-block;
+  margin: 20px;
+  text-align: center;
+}
+#carouselExampleIndicators #accessory {
+  margin-right: auto;
+}
+#carouselExampleIndicators #top {
+  margin-left: auto;
+}
 .desLabel {
   text-align: center;
   display: inline-flex;

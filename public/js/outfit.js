@@ -171,6 +171,7 @@ $(document).ready(() => {
           $('#acc1Img').append('<img src="../assets/images/womens/accessory1.png" height="200" width="200">')
           $('#acc2Img').append('<img src="../assets/images/womens/accessory2.png" height="200" width="200">')
           $('#acc3Img').append('<img src="../assets/images/womens/accessory3.png" height="200" width="200">')
+
         } else if (response.main.temp >= 70 && data.gender == "male") {
           $('#top1Img').append('<img src="../assets/images/mens/tee1.png" height="200" width="200">')
           $('#top2Img').append('<img src="../assets/images/mens/tee2.png" height="200" width="200">')
@@ -185,7 +186,7 @@ $(document).ready(() => {
           $('#acc2Img').append('<img src="../assets/images/mens/accessory2.png" height="200" width="200">')
           $('#acc3Img').append('<img src="../assets/images/mens/accessory3.png" height="200" width="200">')
         }
-        else if (response.main.temp >= 40 && data.gender == "male") {
+        else if (response.main.temp >= 50 && data.gender == "male") {
           $('#top1Img').append('<img src="../assets/images/mens/sweater1.png" height="200" width="200">')
           $('#top2Img').append('<img src="../assets/images/mens/sweater2.png" height="200" width="200">')
           $('#top3Img').append('<img src="../assets/images/mens/sweater3.png" height="200" width="200">')
@@ -198,19 +199,48 @@ $(document).ready(() => {
           $('#acc1Img').append('<img src="../assets/images/mens/accessory1.png" height="200" width="200">')
           $('#acc2Img').append('<img src="../assets/images/mens/accessory2.png" height="200" width="200">')
           $('#acc3Img').append('<img src="../assets/images/mens/accessory3.png" height="200" width="200">')
-        } else if (response.main.temp >= 40 && data.gender == "female") {
+
+        } else if (response.main.temp >= 50 && data.gender == "female") {
           $('#top1Img').append('<img src="../assets/images/womens/sweater1.png" height="200" width="200">')
           $('#top2Img').append('<img src="../assets/images/womens/sweater2.png" height="200" width="200">')
           $('#top3Img').append('<img src="../assets/images/womens/sweater3.png" height="200" width="200">')
-          $('#bottom1Img').append('<img src="../assets/images/womens/pant1.png" height="200" width="200">')
-          $('#bottom2Img').append('<img src="../assets/images/womens/pant2.png" height="200" width="200">')
-          $('#bottom3Img').append('<img src="../assets/images/womens/pant3.png" height="200" width="200">')
-          $('#shoe1Img').append('<img src="../assets/images/womens/shoe1.png" height="200" width="200">')
-          $('#shoe2Img').append('<img src="../assets/images/womens/shoe2.png" height="200" width="200">')
-          $('#shoe3Img').append('<img src="../assets/images/womens/shoe3.png" height="200" width="200">')
-          $('#acc1Img').append('<img src="../assets/images/womens/accessory1.png" height="200" width="200">')
-          $('#acc2Img').append('<img src="../assets/images/womens/accessory2.png" height="200" width="200">')
+          $('#bottom1Img').append('<img src="../assets/images/womens/jeans2.png" height="200" width="200">')
+          $('#bottom2Img').append('<img src="../assets/images/womens/jeans1.png" height="200" width="200">')
+          $('#bottom3Img').append('<img src="../assets/images/womens/pant5.png" height="200" width="200">')
+          $('#shoe1Img').append('<img src="../assets/images/womens/boots1.png" height="200" width="200">')
+          $('#shoe2Img').append('<img src="../assets/images/womens/boots2.png" height="200" width="200">')
+          $('#shoe3Img').append('<img src="../assets/images/womens/boots3.png" height="200" width="200">')
+          $('#acc1Img').append('<img src="../assets/images/womens/accessory4.png" height="200" width="200">')
+          $('#acc2Img').append('<img src="../assets/images/womens/accessory5.png" height="200" width="200">')
           $('#acc3Img').append('<img src="../assets/images/womens/accessory3.png" height="200" width="200">')
+
+        } else if (response.main.temp < 50 && data.gender == "female") {
+          $('#top1Img').append('<img src="../assets/images/womens/winterjacket1.png" height="200" width="200">')
+          $('#top2Img').append('<img src="../assets/images/womens/winterjacket2.png" height="200" width="200">')
+          $('#top3Img').append('<img src="../assets/images/womens/winterjacket3.png" height="200" width="200">')
+          $('#bottom1Img').append('<img src="../assets/images/womens/winterpant1.png" height="200" width="200">')
+          $('#bottom2Img').append('<img src="../assets/images/womens/winterpant2.png" height="200" width="200">')
+          $('#bottom3Img').append('<img src="../assets/images/womens/winterpant3.png" height="200" width="200">')
+          $('#shoe1Img').append('<img src="../assets/images/womens/wintershoe1.png" height="200" width="200">')
+          $('#shoe2Img').append('<img src="../assets/images/womens/wintershoe2.png" height="200" width="200">')
+          $('#shoe3Img').append('<img src="../assets/images/womens/wintershoe3.png" height="200" width="200">')
+          $('#acc1Img').append('<img src="../assets/images/womens/winteracc1.png" height="200" width="200">')
+          $('#acc2Img').append('<img src="../assets/images/womens/winteracc2.png" height="200" width="200">')
+          $('#acc3Img').append('<img src="../assets/images/womens/winteracc3.png" height="200" width="200">')
+
+        } else if (response.main.temp < 50 && data.gender == "male") {
+          $('#top1Img').append('<img src="../assets/images/mens/jacket3.png" height="200" width="200">')
+          $('#top2Img').append('<img src="../assets/images/mens/jacket4.png" height="200" width="200">')
+          $('#top3Img').append('<img src="../assets/images/mens/jacket5.png" height="200" width="200">')
+          $('#bottom1Img').append('<img src="../assets/images/mens/winterpant1.png" height="200" width="200">')
+          $('#bottom2Img').append('<img src="../assets/images/mens/winterpant2.png" height="200" width="200">')
+          $('#bottom3Img').append('<img src="../assets/images/mens/winterpant3.png" height="200" width="200">')
+          $('#shoe1Img').append('<img src="../assets/images/mens/wintershoe1.png" height="200" width="200">')
+          $('#shoe2Img').append('<img src="../assets/images/mens/wintershoe2.png" height="200" width="200">')
+          $('#shoe3Img').append('<img src="../assets/images/mens/wintershoe3.png" height="200" width="200">')
+          $('#acc1Img').append('<img src="../assets/images/mens/winteracc1.png" height="200" width="200">')
+          $('#acc2Img').append('<img src="../assets/images/mens/winteracc2.png" height="200" width="200">')
+          $('#acc3Img').append('<img src="../assets/images/mens/winteracc3.png" height="200" width="200">')
         }
       });
     }));
@@ -232,5 +262,3 @@ $(document).ready(() => {
     })
   });
   });
-
-

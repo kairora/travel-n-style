@@ -107,11 +107,21 @@ let mensTees = [
 ];
 let womenTeeIndex = Math.floor(Math.random() * womensTees.length);
 let menTeeIndex = Math.floor(Math.random() * mensTees.length);
+
 $(document).ready(() => {
+  //to get the out fit image url from outfit table
+  $.get("/api/outfit_data").then(data => {
+    console.log("success");
+    console.log(data.top);
+    
+  })
+  //to retrive the gender value from users table
   var gender = $.get("/api/user_data").then(data => {
     console.log(data.gender);
-    let m = moment();
+    
+    
 
+    let m = moment();
     function displayWeather(response) {
       // converts timezone to UTC offset in minutes
       let UTC = response.timezone / 60;
@@ -259,6 +269,6 @@ $(document).ready(() => {
         console.error(theOtherThing)
       },
     })
-    })
+  }) 
   });
   });

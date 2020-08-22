@@ -94,7 +94,7 @@ app.get("/api/fav/id/:id", function(req, res) {
           // inputs UTC offset and outputs a date stored in let
           let date = dDay().utcOffset(UTC).format("M/DD/YYYY");
           response.data.UTCdate = date
-          console.log(response.data)
+          console.log(response);
           res.json(response.data);
         }).catch(err=>console.error("city apit error:",err));
     }

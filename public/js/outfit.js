@@ -199,7 +199,7 @@ $(document).ready(() => {
   $.get("/api/user_data").then(data => {
     // console.log(data.gender);
     user_id = data.id;
-    let m = moment();
+    // let m = moment();
     function displayWeather(response) {
       // converts timezone to UTC offset in minutes
       // let UTC = response.timezone / 60;

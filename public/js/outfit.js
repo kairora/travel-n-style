@@ -1,7 +1,7 @@
 /* eslint-disable */
 let womensSummerAccessories = [
-  "..//assets/images/womens/accessory1.png",
-  "..//assets/images/womens/accessory2.png",
+  "../assets/images/womens/accessory1.png",
+  "../assets/images/womens/accessory2.png",
   "../assets/images/womens/accessory3.png",
   "../assets/images/womens/accessory4.png",
   "../assets/images/womens/accessory5.png"
@@ -47,7 +47,7 @@ let womensSweaters = [
   "../assets/images/womens/jacket1.png",
   "../assets/images/womens/jacket2.png",
   "../assets/images/womens/jacket3.png",
-  "../assets/images/womens/jacket4.png" 
+  "../assets/images/womens/jacket4.png"
 ];
 let womensFallShoes = [
   "../assets/images/womens/boots1.png",
@@ -136,49 +136,67 @@ let mensWinterBoots = [
   "../assets/images/mens/wintershoe2.png",
   "../assets/images/mens/wintershoe3.png",
 ];
-// let womenAccessoryIndex = Math.floor(Math.random() * womensAccessories.length);
-// let menAccessoryIndex = Math.floor(Math.random() * mensAccessories.length);
-// let womenJacketIndex = Math.floor(Math.random() * womensJackets.length);
-// let menJacketIndex = Math.floor(Math.random() * mensJackets.length);
-// let womenPantIndex = Math.floor(Math.random() * womensPants.length);
-// let menPantIndex = Math.floor(Math.random() * mensPants.length);
-// let womenShoeIndex = Math.floor(Math.random() * womensShoes.length);
-// let menShoeIndex = Math.floor(Math.random() * mensShoes.length);
-// let womenDressIndex = Math.floor(Math.random() * womensDress.length);
-// let menShortIndex = Math.floor(Math.random() * mensShorts.length);
-// let womenSweaterIndex = Math.floor(Math.random() * womensSweaters.length);
-// let menSweaterIndex = Math.floor(Math.random() * mensSweaters.length);
-// let womenTeeIndex = Math.floor(Math.random() * womensTees.length);
-// let menTeeIndex = Math.floor(Math.random() * mensTees.length);
+let user_id;
 
 
-function carouselImg (el, imgArr) {
+function carouselImg(el, imgArr) {
+  console.log(el)
   $(el).empty()
-  for (let i = 0; i<imgArr.length; i++) {
+  console.log(imgArr.length);
+  for (let i = 0; i < imgArr.length; i++) {
     let carouselItem = $("<div>")
     if (i === 0) {
       carouselItem.attr("class", "carousel-item active")
     } else {
       carouselItem.attr("class", "carousel-item")
     }
-    $(carouselItem).append('<img src="'+ imgArr[i] +'" height="200" width="200">')
+    $(carouselItem).append('<img src="' + imgArr[i] + '" height="200" width="200">')
     $(el).append(carouselItem)
-    console.log(imgArr[i])
     // $('#top1Img').empty().append('<img src="..//assets/images/womens/tee1.png" height="200" width="200">')
   }
 }
 
+
+
 $(document).ready(() => {
+  $("#outfit").hide();
+  $("#temp-card").hide();
+
+   //function to get outfit from db
+   function getOutfits(id) {
+    let idString = id || "";
+    if (idString) { 
+      idString = "/id/" + idString;
+    }
+    console.log(idString);
+    $.get("/api/fav" + idString, function(data) {
+      console.log(data);
+      let favArray = [];
+      for (let i = 0; i < data.length; i ++){
+        favArray.push(data[i].top);
+        favArray.push(data[i].bottom);
+        favArray.push(data[i].accessory);
+        favArray.push(data[i].shoe);
+      }
+      console.log("favArray", favArray);
+      
+      carouselImg('#showfav1', favArray);
+      
+    })
+  };
+   
   //to get the out fit image url from outfit table
-  $.get("/api/outfit_data").then(data => {
-    console.log("success");
-    console.log(data.top);
+  $("#saved-fav").on("click", event=>{
+    event.preventDefault();
+    console.log("saved-btn-clicked")
+    getOutfits(user_id);
     
-  })
+  });
+  
   //to retrive the gender value from users table
   $.get("/api/user_data").then(data => {
     console.log(data.gender);
-
+    user_id = data.id;
     let m = moment();
     function displayWeather(response) {
       // converts timezone to UTC offset in minutes
@@ -194,7 +212,7 @@ $(document).ready(() => {
         response.weather[0].icon +
         ".png"
       );
-      $(".currentcity").empty().append(icon);
+      $(".currentcity").append(icon);
       // temperature display and set into localStorage
       $("#ctemp").text(
         "Temperature: " + response.main.temp.toFixed(1) + " °F"
@@ -206,7 +224,9 @@ $(document).ready(() => {
     }
     //adding event listener to search button
     $("#city-btn").on("click", ((event) => {
-      event.preventDefault(); 
+      event.preventDefault();
+      $("#outfit").show();
+      $("#temp-card").show();
       $("#error").text('');
       let city = $("#city").val().toUpperCase();
       $.ajax({
@@ -241,19 +261,16 @@ $(document).ready(() => {
           carouselImg('#bottom1Img', mensPants)
           carouselImg('#shoe1Img', mensShoes)
           carouselImg('#accessory1Img', mensSummerAccessories)
-
         } else if (response.main.temp >= 50 && data.gender == "female") {
           carouselImg('#top1Img', womensSweaters)
           carouselImg('#bottom1Img', womenFallPants)
           carouselImg('#shoe1Img', womensFallShoes)
           carouselImg('#accessory1Img', womensSummerAccessories)
-
         } else if (response.main.temp < 50 && data.gender == "female") {
           carouselImg('#top1Img', womensWinterJackets)
           carouselImg('#bottom1Img', womenWinterPants)
           carouselImg('#shoe1Img', womensWinterBoots)
           carouselImg('#accessory1Img', womensWinterAccessories)
-
         } else if (response.main.temp < 50 && data.gender == "male") {
           carouselImg('#top1Img', menswinterJackets)
           carouselImg('#bottom1Img', menWinterPants)
@@ -262,24 +279,35 @@ $(document).ready(() => {
         }
       });
     }));
-    $("#fav-fit").on("click", event=>{
-      event.preventDefault()
-      console.log($("li.active"))
-  //     const stubs = {
-  //       top:
-  //       bottom: 
-  //       shoe: 
-  //       UserId: data.id
-  // }
-    //  $.ajax({
-    //   type: "POST",
-    //   url: "/api/fav",
-    //   data: stubs,
-    //   success: (success,theOtherThing)=>{
-    //     console.log(success)
-    //     console.error(theOtherThing)
-    //   },
-    // })
-  }) 
+    $("#fav-fit").on("click", event => {
+      event.preventDefault();
+      let bottom = $("#bottom .active img")
+      let top = $("#top .active img")
+      let shoe = $("#shoe .active img")
+      let accessory = $("#accessory .active img")
+      console.log(bottom[0].currentSrc)
+      console.log(bottom)
+      const stubs = {
+        top: top[0].currentSrc,
+        bottom: bottom[0].currentSrc,
+        shoe: shoe[0].currentSrc,
+        accessory: accessory[0].currentSrc,
+        UserId: data.id
+      }
+      $.ajax({
+        type: "POST",
+        url: "/api/fav",
+        data: stubs,
+        success: (success, theOtherThing) => {
+          console.log(success)
+          console.error(theOtherThing)
+        },
+      })
+    })
+  
   });
-  });
+  
+});
+
+
+  

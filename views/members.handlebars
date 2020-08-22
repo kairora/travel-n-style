@@ -1,16 +1,12 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/logout">
-        Logout
-      </a>
-    </div>
-  </div>
+<link href="stylesheets/members.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<nav class="navbar navbar-expand-lg" id="nav-css">
+  <h4>Welcome <span class="member-name"></span></h4>
+  <a class="navbar-brand" href="/logout">Log Out</a>
 </nav>
 <div class="container">
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
-      <h2>Welcome <span class="member-name"></span></h2>
     </div>
   </div>
   <div class="jumbotron">
@@ -18,12 +14,12 @@
       <div class="col-md-4">
         <h1>Travel N Style</h1>
         <br>
-        <h4>Enter a city</h4>
+        <h5>Enter a city</h5>
         <panel>
           <form class="create-form">
             <div class="form-group">
               <input id="city" placeholder="enter city"></input>
-              <button type="submit" class="btn btn-success" id="city-btn">
+              <button type="submit" class="button" id="city-btn">
                 <span class="fa fa-search"></span>
               </button>
             </div>
@@ -32,90 +28,139 @@
       </div>
       <div class="col-md-8">
         <section>
-          <div class="card m-2">
+          <div class="card m-2 id=" temp-card">
             <h2 class="currentcity m-4"></h2>
             <p class="current ml-4" id="ctemp">
             <p class="current ml-4" id="chumid"></p>
             <p class="current ml-4" id="cwind"></p>
             <p class="current ml-4" id="cuv"><span class="cSpan"></span></p>
-          </div class="card">
+          </div>
         </section>
       </div>
     </div>
   </div>
-  <div class="row">
-    {{!-- this is for top --}}
-    <div class="card">
-      <div id="top" class="ml-auto carouselExampleIndicators carousel slide" data-interval="false" >
-        <ol class="carousel-indicators">
-          <li data-target="#top" data-slide-to="0" class="active"></li>
-          <li data-target="#top" data-slide-to="1"></li>
-          <li data-target="#top" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner" id="top1Img"></div>
-        <a class="carousel-control-prev" href="#top" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#top" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
+  <div id="outfit">
+    <div class="panel panel-default">
+                <div class="panel-heading" id="recomm"><strong>Based on today's weather suggested outfits are:</strong>
+                </div>
+       <div> 
+    <div class="row">       
+      {{!-- this is for top --}}
+      <div class="col-md-4" >
+        <div id="top" class="carouselExampleIndicators carousel slide card" data-interval="false">
+          <ol class="carousel-indicators">
+            <li data-target="#top" data-slide-to="0" class="active"></li>
+            <li data-target="#top" data-slide-to="1"></li>
+            <li data-target="#top" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner" id="top1Img"></div>
+          <a class="carousel-control-prev" href="#top" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#top" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="row">
+          <div class="col-md-12">
+             <button class="btn" id="fav-fit">Mix and Match</button>
+          </div>
+          <div class="col-md-12">
+             <button class="btn" id="saved-fav">My Favorite!!</button>
+          </div>
+        </div>
+      </div>
+
+      {{!-- this is for bottomware --}}
+      <div class="col-md-4">
+        <div id="bottom" class="carouselExampleIndicators carousel slide card" data-interval="false"
+          data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#bottom" data-slide-to="0" class="active"></li>
+            <li data-target="#bottom" data-slide-to="1"></li>
+            <li data-target="#bottom" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner" id="bottom1Img"></div>
+          <a class="carousel-control-prev" href="#bottom" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#bottom" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
       </div>
     </div>
-    {{!-- this is for bottomware --}}
-    <div id="bottom" class="carouselExampleIndicators carousel slide card" data-interval="false" data-ride="carousel">
+    <div class="row">
+      {{!-- this is for shoes --}}
+      <div class="col-md-4">
+        <div id="shoe" class="carouselExampleIndicators carousel slide card" data-interval="false" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#shoe" data-slide-to="0" class="active"></li>
+            <li data-target="#shoe" data-slide-to="1"></li>
+            <li data-target="#shoe" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner" id="shoe1Img"></div>
+          <a class="carousel-control-prev" href="#shoe" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#shoe" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-4">
+
+  
+    <div id="showFav" data-interval="false" class="carouselExampleIndicators  carousel mr-auto slide card"
+      data-ride="carousel">
       <ol class="carousel-indicators">
-        <li data-target="#bottom" data-slide-to="0" class="active"></li>
-        <li data-target="#bottom" data-slide-to="1"></li>
-        <li data-target="#bottom" data-slide-to="2"></li>
+        <li data-target="#showfav" data-slide-to="0" class="active"></li>
+        <li data-target="#showfav" data-slide-to="1"></li>
+        <li data-target="#showfav" data-slide-to="2"></li>
       </ol>
-      <div class="carousel-inner" id="bottom1Img"></div>
-      <a class="carousel-control-prev" href="#bottom" role="button" data-slide="prev">
+      <div class="carousel-inner" id="showfav1"></div>
+      <a class="carousel-control-prev" href="#showFav" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
       </a>
-      <a class="carousel-control-next" href="#bottom" role="button" data-slide="next">
+      <a class="carousel-control-next" href="#showFav" role="button" data-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
       </a>
+    </div> 
+      </div>
+      {{!-- this is for accessories --}}
+      <div class="col-md-4">
+        <div id="accessory" data-interval="false" class="carouselExampleIndicators  carousel  slide card"
+          data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#accessory" data-slide-to="0" class="active"></li>
+            <li data-target="#accessory" data-slide-to="1"></li>
+            <li data-target="#accessory" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner" id="accessory1Img"></div>
+          <a class="carousel-control-prev" href="#accessory" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#accessory" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
     </div>
-    {{!-- this is for shoes --}}
-    <div id="shoe" class="carouselExampleIndicators carousel slide card" data-interval="false" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#shoe" data-slide-to="0" class="active"></li>
-        <li data-target="#shoe" data-slide-to="1"></li>
-        <li data-target="#shoe" data-slide-to="2"></li>
-      </ol>
-      <div class="carousel-inner" id="shoe1Img"></div>
-      <a class="carousel-control-prev" href="#shoe" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#shoe" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
-    {{!-- this is for accessories --}}
-    <div id="accessory" data-interval="false" class="carouselExampleIndicators  carousel mr-auto slide card" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#accessory" data-slide-to="0" class="active"></li>
-        <li data-target="#accessory" data-slide-to="1"></li>
-        <li data-target="#accessory" data-slide-to="2"></li>
-      </ol>
-      <div class="carousel-inner" id="accessory1Img"></div>
-      <a class="carousel-control-prev" href="#accessory" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#accessory" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
-    <button id="fav-fit">your fav</button>
   </div>
+
 </div>
 <script type="text/javascript" src="js/members.js"></script>
 <script type="text/javascript" src="js/outfit.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

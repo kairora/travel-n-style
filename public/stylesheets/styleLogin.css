@@ -8,10 +8,10 @@ body{
   background:linear-gradient(
       rgba(0, 0, 0, 0.10), 
       rgba(0, 0, 0, 0.50)
-    ), url("../assets/images/city/login.jpg");
+    ), url("../assets/images/city/signupbg.jpg");
   background-size: cover; 
   background-attachment: fixed;
-  height: 110vh;
+  height: 100vh;
   width: 100vw;
   background-repeat: no-repeat;
   background-position: center;
@@ -27,7 +27,7 @@ body{
 .card{
 background-color: blanchedalmond;
 /* margin-bottom: 10px; */
-margin-top: 180px;
+margin-top: 200px;
 text-align: center;
 }
 .card-header{
@@ -54,7 +54,7 @@ margin: 10px 0;
 input {
 	width: 300px;
 	height: 30px;
-  margin-bottom: 10px !important;
+  margin-top: 20px !important;
 }
 
 form {

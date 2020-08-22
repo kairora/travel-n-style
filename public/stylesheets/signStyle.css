@@ -3,11 +3,22 @@ h1{
     color: white;
 }
 body{
-    background-image: url("../assets/images/city/travel_member.jpg");
-    background-size: cover;
+    /* background-image: url("../assets/images/city/signupbg.jpg"); */
+     
+    background:linear-gradient(
+        rgba(0, 0, 0, 0.10), 
+        rgba(0, 0, 0, 0.50)
+      ), url("../assets/images/city/signupbg.jpg");
+    background-size: cover; 
+    background-attachment: fixed;
+    height: 100vh;
+    width: 100vw;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 .container{
-    margin-top: 150px;
+    top:-150px;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,16 +26,114 @@ body{
 }
 .card{
   background-color: blanchedalmond;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
+  margin-top: 200px;
   text-align: center;
 }
 .card-header{
-  background-color: royalblue;
+  background-color: rgba(4, 127, 155, 0.5);
   color: white;
 }
 .w3-panel.w3-border{
     color: white;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: bolder;
     font-style: oblique;
+}
+
+
+#brand {
+	font-family: 'Oleo Script Swash Caps', cursive;
+	color: white;
+	font-size: 2.5em;
+	line-height: 1.7em;
+	text-shadow: 0px 0px 15px #000000;
+	margin: 10px 0;
+}
+
+input {
+	width: 300px;
+	height: 30px;
+  margin-bottom: 10px !important;
+}
+
+.radioBtns{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.radioBtns input {
+	height: 16px;
+	width: 20px;
+	margin: 0;
+}
+
+.gender {
+	margin: 0 20px;
+	height: 20px;
+	text-align: center;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 0;
+}
+
+.btn {
+	margin: 10px auto;
+	font-size: 1em;
+	font-weight: bold;
+	width: 150px;
+	height: 50px;
+	border: none;
+}
+
+.radioBtns {
+	display: flex;
+	flex-direction: row;
+}
+
+.btn {
+  -webkit-border-radius: 5;
+  -moz-border-radius: 5;
+  border-radius: 5px;
+   -webkit-box-shadow: 0px 0px 3px #666666;
+  -moz-box-shadow: 0px 0px 3px #666666;
+  box-shadow: 0px 0px 3px #666666;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  background: rgba(200,200,200,0.5);
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+}
+
+.btn:hover {
+  background: rgba(4, 127, 155, 0.5);
+  text-decoration: none;
+}
+
+.form-control {
+     padding: 4px;
+     font-size: 14px;
+     border-width: 1px;
+     border-color: #CCCCCC;
+     background-color: #FFFFFF;
+     color: #000000;
+     border-style: hidden;
+     border-radius: 4px;
+     box-shadow: 0px 0px 5px rgba(66,66,66,.36);
+     text-shadow:  0px 0px 5px px rgba(66,66,66,.75);
+}
+ .form-control:focus {
+     outline:none;
+}
+
+#login {
+  color:  rgba(4, 127, 155, 0.5);
 }

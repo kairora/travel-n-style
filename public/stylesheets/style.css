@@ -7,25 +7,57 @@
 }*/
 form.signup,
 form.login {
-  margin-top: 50px;
+  margin-top: 30px;
+}
+.welcome {
+  color: white;
 }
 
-.card{
+.jumbotron.card {
   margin: 0 auto;
   float: none;
-  margin-bottom:10px ;
+  /* margin-top:45vh;
+  margin-bottom:110px; */
+  width: 40vw;
   
 }
-.desLabel {
-  margin-top: 200px;
+#carouselExampleIndicators {
+  width: 15vw;
+}
+.carousel {
+  display: inline-block;
+  margin: 20px;
   text-align: center;
+}
+#carouselExampleIndicators #accessory {
+  margin-right: auto;
+}
+#carouselExampleIndicators #top {
+  margin-left: auto;
+}
+.desLabel {
+  text-align: center;
+  display: inline-flex;
 }
 
 .dropdownBtn {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  display: inline-block;
   width: 200px;
+}
+.dropdown {
+  width: 200px;
+  display: inline-flex;
+  text-align: center;
+}
+.dropnbtn{
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px
+}
+
+#city-btn {
+  /* position: relative; */
+  display: inline-block;
 }
 
 .start, .end {

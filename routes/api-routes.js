@@ -3,7 +3,9 @@
 const db = require("../models");
 const passport = require("../config/passport");
 const axios = require("axios");
-
+let dDay = require("dayjs");
+let utc = require('dayjs/plugin/utc')
+dDay.extend(utc)
 module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
@@ -15,7 +17,6 @@ module.exports = function (app) {
       id: req.user.id
     });
   });
-
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
@@ -35,12 +36,36 @@ module.exports = function (app) {
         res.status(401).json(err);
       });
   });
+  //post route outfit table
+app.post("/api/fav",(req,res) =>{
+  console.log(req.body)
+  db.Outfit.create(req.body).then(sponse=>{
+    //find the user associate4d, 
+    //create new outfit record
+    console.log(sponse)
+    res.json({ok:true, sponse})
+  }).catch(err=>{throw err})
+});
+
+// Route for getting some data about saved outfit to be used client side
+app.get("/api/fav/id/:id", function(req, res) {
+  console.log("in apiroute");
+  db.Outfit.findAll({
+    where: {
+      UserId: req.params.id
+    }
+  })
+  .then(function(dbPost) {
+    res.json(dbPost);
+  });
+});
 
   // Route for logging user out
   app.get("/logout", (req, res) => {
     req.logout();
     res.redirect("/");
   });
+
 
   // Route for getting some data about our user to be used client side
   app.get("/api/user_data", (req, res) => {
@@ -59,22 +84,24 @@ module.exports = function (app) {
       });
     }
   });
+  
   app.get("/api/weather", (req, res) => {
     let city =req.query.city;
     //declaring variables
     let queryUrl = "https://api.openweathermap.org/data/2.5/weather?q=";
     let queryUrlForcast = "https://api.openweathermap.org/data/2.5/onecall?lat=";
-
     let appID = process.env.WEATHER_API_KEY;
-    console.log(appID);
-
+    console.log("appID:",appID);
     if (city !== "") {
       axios.get(queryUrl + city + "&units=imperial" + "&APPID=" + appID)
         .then(function (response) {
+          let UTC = response.data.timezone / 60;
+          // inputs UTC offset and outputs a date stored in let
+          let date = dDay().utcOffset(UTC).format("M/DD/YYYY");
+          response.data.UTCdate = date
           console.log(response);
           res.json(response.data);
-        });
-
+        }).catch(err=>console.error("city apit error:",err));
     }
   });
 };

@@ -197,14 +197,14 @@ $(document).ready(() => {
   $.get("/api/user_data").then(data => {
     console.log(data.gender);
     user_id = data.id;
-    let m = moment();
+    
     function displayWeather(response) {
-      // converts timezone to UTC offset in minutes
-      let UTC = response.timezone / 60;
-      // inputs UTC offset and outputs a date stored in let
-      let date = m.utcOffset(UTC).format("M/DD/YYYY");
-      // displays city name + date
-      $(".currentcity").text($("#city").val() + " " + "(" + date + ")");
+      // // converts timezone to UTC offset in minutes
+      // let UTC = response.timezone / 60;
+      // // inputs UTC offset and outputs a date stored in let
+      // let date = m.utcOffset(UTC).format("M/DD/YYYY");
+      // // displays city name + date
+      $(".currentcity").text($("#city").val() + " " + "(" + response.UTCdate + ")");
       // icon
       let icon = $("<img>").attr(
         "src",

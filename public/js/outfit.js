@@ -160,6 +160,7 @@ function carouselImg(el, imgArr) {
 
 $(document).ready(() => {
   $("#outfit").hide();
+  $("#temp-card").hide();
 
    //function to get outfit from db
    function getOutfits(id) {
@@ -225,6 +226,7 @@ $(document).ready(() => {
     $("#city-btn").on("click", ((event) => {
       event.preventDefault();
       $("#outfit").show();
+      $("#temp-card").show();
       $("#error").text('');
       let city = $("#city").val().toUpperCase();
       $.ajax({

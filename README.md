@@ -35,7 +35,7 @@ First sign up with your name, email, password, and gender.
 
 ![App Sign Up Image](/public/assets/images/city/signuppic.PNG)
 
-The app will log you in and you can begin by entering your destination city. Click the submit button and the app will serve you the weather (hopefully something warm) and some sweet clothing options that you can save for your reference later.
+The app will log you in and you can begin by entering your destination city. Click the submit button and the app will serve you the weather (hopefully something warm) and some sweet clothing options that you can save to your closet for your reference later.
 
 ![Full App Interface Image](/public/assets/images/city/fullapp.PNG)
 

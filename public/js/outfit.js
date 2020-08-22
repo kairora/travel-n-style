@@ -1,6 +1,4 @@
 /* eslint-disable */
-let savedOutfits = $(".savedOutfits")
-
 let womensSummerAccessories = [
   "../assets/images/womens/accessory1.png",
   "../assets/images/womens/accessory2.png",
@@ -140,7 +138,9 @@ let mensWinterBoots = [
 ];
 let user_id;
 function carouselImg(el, imgArr) {
+  console.log(el)
   $(el).empty()
+  console.log(imgArr.length);
   for (let i = 0; i < imgArr.length; i++) {
     let carouselItem = $("<div>")
     if (i === 0) {
@@ -154,16 +154,8 @@ function carouselImg(el, imgArr) {
   }
 }
 $(document).ready(() => {
-
   $("#outfit").hide();
-   //function to push clothes pic
-   function pushCloth(data){
-     for(let i =0; i < data.length; i ++){
-       data.filter (word =>{
-         return word === "top"
-       })
-     }
-   }
+  $("#temp-card").hide();
    //function to get outfit from db
    function getOutfits(id) {
     let idString = id || "";
@@ -171,41 +163,35 @@ $(document).ready(() => {
       idString = "/id/" + idString;
     }
     console.log(idString);
-    
     $.get("/api/fav" + idString, function(data) {
       console.log(data);
+      let favArray = [];
       for (let i = 0; i < data.length; i ++){
-        let topImg = "<img/>";
-        let bottomImg = "<img/>"
-        let shoeImg = "<img/>"
-        let accImg = "<img/>"
-        topImg.setA("src", data[i].top)
-        bottomImg.attr("src", data[i].bottom)
-        shoeImg.attr("src", data[i].shoe)
-        accImg.attr("src", data[i].accessory)
-        savedOutfits.append(topImg, bottomImg, shoeImg, accImg)
+        favArray.push(data[i].top);
+        favArray.push(data[i].bottom);
+        favArray.push(data[i].accessory);
+        favArray.push(data[i].shoe);
       }
-      console.log(data[0].top);
-      // console.log("Outfits", data);
+      console.log("favArray", favArray);
+      carouselImg('#showfav1', favArray);
     })
   };
   //to get the out fit image url from outfit table
-  $(".viewBtn").on("click", event=>{
+  $("#saved-fav").on("click", event=>{
     event.preventDefault();
     console.log("saved-btn-clicked")
     getOutfits(user_id);
   });
   //to retrive the gender value from users table
   $.get("/api/user_data").then(data => {
-    // console.log(data.gender);
+    console.log(data.gender);
     user_id = data.id;
-    // let m = moment();
     function displayWeather(response) {
-      // converts timezone to UTC offset in minutes
+      // // converts timezone to UTC offset in minutes
       // let UTC = response.timezone / 60;
       // // inputs UTC offset and outputs a date stored in let
-      // let date = dDay.utcOffset(UTC).format("M/DD/YYYY");
-      // displays city name + date
+      // let date = m.utcOffset(UTC).format("M/DD/YYYY");
+      // // displays city name + date
       $(".currentcity").text($("#city").val() + " " + "(" + response.UTCdate + ")");
       // icon
       let icon = $("<img>").attr(
@@ -228,6 +214,7 @@ $(document).ready(() => {
     $("#city-btn").on("click", ((event) => {
       event.preventDefault();
       $("#outfit").show();
+      $("#temp-card").show();
       $("#error").text('');
       let city = $("#city").val().toUpperCase();
       $.ajax({
@@ -286,8 +273,8 @@ $(document).ready(() => {
       let top = $("#top .active img")
       let shoe = $("#shoe .active img")
       let accessory = $("#accessory .active img")
-      // console.log(bottom[0].currentSrc)
-      // console.log(bottom)
+      console.log(bottom[0].currentSrc)
+      console.log(bottom)
       const stubs = {
         top: top[0].currentSrc,
         bottom: bottom[0].currentSrc,
@@ -300,8 +287,8 @@ $(document).ready(() => {
         url: "/api/fav",
         data: stubs,
         success: (success, theOtherThing) => {
-          // console.log(success)
-          // console.error(theOtherThing)
+          console.log(success)
+          console.error(theOtherThing)
         },
       })
     })

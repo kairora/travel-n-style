@@ -46,7 +46,6 @@ app.post("/api/fav",(req,res) =>{
     res.json({ok:true, sponse})
   }).catch(err=>{throw err})
 });
-
 // Route for getting some data about saved outfit to be used client side
 app.get("/api/fav/id/:id", function(req, res) {
   console.log("in apiroute");
@@ -59,14 +58,11 @@ app.get("/api/fav/id/:id", function(req, res) {
     res.json(dbPost);
   });
 });
-
   // Route for logging user out
   app.get("/logout", (req, res) => {
     req.logout();
     res.redirect("/");
   });
-
-
   // Route for getting some data about our user to be used client side
   app.get("/api/user_data", (req, res) => {
     if (!req.user) {
@@ -84,7 +80,6 @@ app.get("/api/fav/id/:id", function(req, res) {
       });
     }
   });
-  
   app.get("/api/weather", (req, res) => {
     let city =req.query.city;
     //declaring variables

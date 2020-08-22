@@ -137,8 +137,6 @@ let mensWinterBoots = [
   "../assets/images/mens/wintershoe3.png",
 ];
 let user_id;
-
-
 function carouselImg(el, imgArr) {
   console.log(el)
   $(el).empty()
@@ -155,13 +153,9 @@ function carouselImg(el, imgArr) {
     // $('#top1Img').empty().append('<img src="..//assets/images/womens/tee1.png" height="200" width="200">')
   }
 }
-
-
-
 $(document).ready(() => {
   $("#outfit").hide();
   $("#temp-card").hide();
-
    //function to get outfit from db
    function getOutfits(id) {
     let idString = id || "";
@@ -179,25 +173,19 @@ $(document).ready(() => {
         favArray.push(data[i].shoe);
       }
       console.log("favArray", favArray);
-      
       carouselImg('#showfav1', favArray);
-      
     })
   };
-   
   //to get the out fit image url from outfit table
   $("#saved-fav").on("click", event=>{
     event.preventDefault();
     console.log("saved-btn-clicked")
     getOutfits(user_id);
-    
   });
-  
   //to retrive the gender value from users table
   $.get("/api/user_data").then(data => {
     console.log(data.gender);
     user_id = data.id;
-    
     function displayWeather(response) {
       // // converts timezone to UTC offset in minutes
       // let UTC = response.timezone / 60;
@@ -304,10 +292,5 @@ $(document).ready(() => {
         },
       })
     })
-  
   });
-  
 });
-
-
-  

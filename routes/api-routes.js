@@ -3,6 +3,9 @@
 const db = require("../models");
 const passport = require("../config/passport");
 const axios = require("axios");
+let dDay = require("dayjs");
+let utc = require('dayjs/plugin/utc')
+dDay.extend(utc)
 module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
@@ -92,6 +95,10 @@ app.get("/api/fav/id/:id", function(req, res) {
     if (city !== "") {
       axios.get(queryUrl + city + "&units=imperial" + "&APPID=" + appID)
         .then(function (response) {
+          let UTC = response.data.timezone / 60;
+          // inputs UTC offset and outputs a date stored in let
+          let date = dDay().utcOffset(UTC).format("M/DD/YYYY");
+          response.data.UTCdate = date
           console.log(response);
           res.json(response.data);
         }).catch(err=>console.error("city apit error:",err));

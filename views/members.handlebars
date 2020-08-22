@@ -1,5 +1,21 @@
 <link href="stylesheets/members.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<style>
+  body{ 
+    background:linear-gradient(
+        rgba(0, 0, 0, 0.10), 
+        rgba(0, 0, 0, 0.50)
+      ), url({{ background }}); 
+    background-size: cover; 
+    background-attachment: fixed;
+    height: 100vh;
+    width: 100vw;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-style: italic;
+    }
+</style>
 <nav class="navbar navbar-expand-lg" id="nav-css">
   <h4>Welcome <span class="member-name"></span></h4>
   <a class="navbar-brand" href="/logout">Log Out</a>
@@ -67,10 +83,10 @@
       <div class="col-md-4">
         <div class="row">
           <div class="col-md-12">
-             <button class="btn" id="fav-fit">Mix and Match</button>
+             <button class="btn" id="fav-fit">Add to Closet</button>
           </div>
           <div class="col-md-12">
-             <button class="btn" id="saved-fav">My Favorite!!</button>
+             <button class="btn" id="saved-fav">Show My Closet</button>
           </div>
         </div>
       </div>

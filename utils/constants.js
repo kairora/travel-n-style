@@ -1,24 +1,7 @@
-const states = [
-  {
-    state: "Illinois",
-    cities: ["Chicago", "Springfield"]
-  },
-  {
-    state: "New York",
-    cities: ["Niagara", "New York City"]
-  },
-  {
-    state: "Texas",
-    cities: ["Dallas", "Houston"]
-  },
-  {
-    state: "Florida",
-    cities: ["Orlando", "Miami"]
-  },
-  {
-    state: "California",
-    cities: ["San Francisco", "Los Angeles"]
+module.exports = function(gender) {
+  if (gender === "male") {
+    return "../assets/images/city/maleFash.jpg";
+  } else if (gender === "female") {
+    return "../assets/images/city/fashion.jpg";
   }
-];
-
-module.exports = { states };
+};

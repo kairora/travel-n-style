@@ -1,10 +1,11 @@
 # Travel-N-Style
 ![ISC license](https://img.shields.io/badge/License-ISC-blue.svg) 
 
-## Description & Deployment
-This is an app meant to aid any traveler who is in dire need of last-minute packing recommendations or clothing ideas. This app is best used near to the date of travel to display the weather conditions in the city of interest and then recommend the best outfits to bring on the trip based on the weather. 
+![Travel N Style App Image](/public/assets/images/city/title.PNG)
 
-![]()
+## Description & Deployment
+This is an app meant to aid any traveler who is in dire need of last-minute packing recommendations or clothing ideas. This app is best used near on the date of trip to display the weather conditions in the city of interest and then recommend the best outfits to bring on the trip based on the weather. The app not only considers the weather, but it also makes suggestions based on gender. Even the app background image changes to represent the gender of the user!
+
 [Visit the deployed app here](https://evening-oasis-14753.herokuapp.com/)
 
 ---
@@ -30,7 +31,13 @@ node server
 and they will be ready to use the app.
 
 ## Usage
-First sign up with your name, email, password, and gender.  The app will log you in and you can begin by entering your destination city. Click the submit button and the app will serve you the weather (hopefully something warm) and some sweet clothing options that you can save for your reference later.
+First sign up with your name, email, password, and gender.  
+
+![App Sign Up Image](/public/assets/images/city/signuppic.PNG)
+
+The app will log you in and you can begin by entering your destination city. Click the submit button and the app will serve you the weather (hopefully something warm) and some sweet clothing options that you can save for your reference later.
+
+![Full App Interface Image](/public/assets/images/city/fullapp.PNG)
 
 ---
 
@@ -49,7 +56,7 @@ If a developer wishes to contribute to this project, please send an email using 
 ---
 
 ## Future Enhancements
-In the future, we plan to expand the app, giving the users a much wider range of clothing options, the ability to choose clothing based on sizing, as well as to save their trip information including the location, weather, and clothing for reference later. 
+In the future, we plan to expand the app, giving the users a much wider range of clothing options, the ability to choose clothing based on sizing, non-binary gender, as well as to save their trip information including the location, weather, and clothing for reference later. 
 
 ## Questions & Links
 

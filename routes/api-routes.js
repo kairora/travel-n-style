@@ -1,12 +1,11 @@
-/* eslint-disable */
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
 const axios = require("axios");
-let dDay = require("dayjs");
-let utc = require('dayjs/plugin/utc')
-dDay.extend(utc)
-module.exports = function (app) {
+const dDay = require("dayjs");
+const utc = require("dayjs/plugin/utc");
+dDay.extend(utc);
+module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
@@ -21,7 +20,6 @@ module.exports = function (app) {
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
   app.post("/api/signup", (req, res) => {
-    console.log(req.body);
     db.User.create({
       firstname: req.body.firstname,
       lastname: req.body.lastname,
@@ -37,27 +35,28 @@ module.exports = function (app) {
       });
   });
   //post route outfit table
-app.post("/api/fav",(req,res) =>{
-  console.log(req.body)
-  db.Outfit.create(req.body).then(sponse=>{
-    //find the user associate4d, 
-    //create new outfit record
-    console.log(sponse)
-    res.json({ok:true, sponse})
-  }).catch(err=>{throw err})
-});
-// Route for getting some data about saved outfit to be used client side
-app.get("/api/fav/id/:id", function(req, res) {
-  console.log("in apiroute");
-  db.Outfit.findAll({
-    where: {
-      UserId: req.params.id
-    }
-  })
-  .then(function(dbPost) {
-    res.json(dbPost);
+  app.post("/api/fav", (req, res) => {
+    db.Outfit.create(req.body)
+      .then(sponse => {
+        //find the user associated,
+        //create new outfit record
+        res.json({ ok: true, sponse });
+      })
+      .catch(err => {
+        throw err;
+      });
   });
-});
+  // Route for getting some data about saved outfit to be used client side
+  app.get("/api/fav/id/:id", (req, res) => {
+    console.log("in apiroute");
+    db.Outfit.findAll({
+      where: {
+        UserId: req.params.id
+      }
+    }).then(dbPost => {
+      res.json(dbPost);
+    });
+  });
   // Route for logging user out
   app.get("/logout", (req, res) => {
     req.logout();
@@ -81,22 +80,25 @@ app.get("/api/fav/id/:id", function(req, res) {
     }
   });
   app.get("/api/weather", (req, res) => {
-    let city =req.query.city;
+    const city = req.query.city;
     //declaring variables
-    let queryUrl = "https://api.openweathermap.org/data/2.5/weather?q=";
-    let queryUrlForcast = "https://api.openweathermap.org/data/2.5/onecall?lat=";
-    let appID = process.env.WEATHER_API_KEY;
-    console.log("appID:",appID);
+    const queryUrl = "https://api.openweathermap.org/data/2.5/weather?q=";
+    const appID = process.env.WEATHER_API_KEY;
+    console.log("appID:", appID);
     if (city !== "") {
-      axios.get(queryUrl + city + "&units=imperial" + "&APPID=" + appID)
-        .then(function (response) {
-          let UTC = response.data.timezone / 60;
+      axios
+        .get(queryUrl + city + "&units=imperial" + "&APPID=" + appID)
+        .then(response => {
+          const UTC = response.data.timezone / 60;
           // inputs UTC offset and outputs a date stored in let
-          let date = dDay().utcOffset(UTC).format("M/DD/YYYY");
-          response.data.UTCdate = date
+          const date = dDay()
+            .utcOffset(UTC)
+            .format("M/DD/YYYY");
+          response.data.UTCdate = date;
           console.log(response);
           res.json(response.data);
-        }).catch(err=>console.error("city apit error:",err));
+        })
+        .catch(err => console.error("city apit error:", err));
     }
   });
 };

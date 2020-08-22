@@ -45,17 +45,17 @@ app.post("/api/fav",(req,res) =>{
 });
 
 // Route for getting some data about saved outfit to be used client side
-app.get("/api/outfit_data", (req, res) => {
-  if (!req.user) {
-    res.json({});
-  } else {
-    res.json({
-      top: req.outfits.top,
-      bottom: req.outfits.bottom,
-    });
-  }
+app.get("/api/fav/id/:id", function(req, res) {
+  console.log("in apiroute");
+  db.Outfit.findAll({
+    where: {
+      UserId: req.params.id
+    }
+  })
+  .then(function(dbPost) {
+    res.json(dbPost);
+  });
 });
-
 
   // Route for logging user out
   app.get("/logout", (req, res) => {

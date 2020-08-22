@@ -1,3 +1,9 @@
+<link href="stylesheets/members.css" type="text/css" rel="stylesheet">
+<script src="https://kit.fontawesome.com/5534597cd1.js" crossorigin="anonymous"></script>
+
+  
+
+
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -13,56 +19,73 @@
       <h2>Welcome <span class="member-name"></span></h2>
     </div>
   </div>
-  <div class="jumbotron">
-    <div class="row">
-      <div class="col-md-4">
-        <h1>Travel N Style</h1>
-        <br>
-        <h4>Enter a city</h4>
-        <panel>
-          <form class="create-form">
-            <div class="form-group">
-              <input id="city" placeholder="enter city"></input>
-              <button type="submit" class="btn btn-success" id="city-btn">
-                <span class="fa fa-search"></span>
-              </button>
-            </div>
-          </form>
-        </panel>
-      </div>
-      <div class="col-md-8">
-        <section>
-          <div class="card m-2">
-            <h2 class="currentcity m-4"></h2>
-            <p class="current ml-4" id="ctemp">
-            <p class="current ml-4" id="chumid"></p>
-            <p class="current ml-4" id="cwind"></p>
-            <p class="current ml-4" id="cuv"><span class="cSpan"></span></p>
-          </div class="card">
-        </section>
+  <div class="row topside">
+    <div class="col-md-3">
+      <div class="card outfitSaves">
+        {{!-- <img src="../assets/images/city/heart.png" alt="Fav" style="width:50%"> --}}
+        <h1>My Styles</h1>
+        <div class="savedOutfits"></div>
+        <button type="button" class="btn btn-outline-secondary viewBtn">VIEW</button>
       </div>
     </div>
+    <div class="col-md-9">
+      <div class="jumbotron">
+        <div class="row">
+          <div class="col-md-5">
+            <h1>Travel N Style</h1>
+            <br>
+            <h4>Enter a city</h4>
+            <panel>
+              <form class="create-form">
+                <div class="form-group">
+                  <input id="city" placeholder="enter city"></input>
+                  <button type="submit" class="btn btn-success" id="city-btn">
+                    <span class="fa fa-search"></span>
+                  </button>
+                </div>
+              </form>
+            </panel>
+          </div>
+          <div class="col-md-7">
+            <section>
+              <div class="card m-2 weatherCard">
+                <h2 class="currentcity m-4"></h2>
+                <p class="current ml-4" id="ctemp">
+                <p class="current ml-4" id="chumid"></p>
+                <p class="current ml-4" id="cwind"></p>
+                <p class="current ml-4" id="cuv"><span class="cSpan"></span></p>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{!-- <div class="col-md-3 weatherCard">
+        
+      </div> --}}
   </div>
-  <div class="row">
+</div>
+<div class="row">
+  <div class="col-md-12" style="text-align: center;">
     {{!-- this is for top --}}
-    <div class="card">
-      <div id="top" class="ml-auto carouselExampleIndicators carousel slide" data-interval="false" >
-        <ol class="carousel-indicators">
-          <li data-target="#top" data-slide-to="0" class="active"></li>
-          <li data-target="#top" data-slide-to="1"></li>
-          <li data-target="#top" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner" id="top1Img"></div>
-        <a class="carousel-control-prev" href="#top" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#top" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
+
+    <div id="top" class="ml-auto carouselExampleIndicators carousel slide" data-interval="false">
+      <ol class="carousel-indicators">
+        <li data-target="#top" data-slide-to="0" class="active"></li>
+        <li data-target="#top" data-slide-to="1"></li>
+        <li data-target="#top" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" id="top1Img"><i class="fas fa-tshirt fa-10x"></i></div>
+      <a class="carousel-control-prev" href="#top" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#top" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
     </div>
+
     {{!-- this is for bottomware --}}
     <div id="bottom" class="carouselExampleIndicators carousel slide card" data-interval="false" data-ride="carousel">
       <ol class="carousel-indicators">
@@ -70,7 +93,7 @@
         <li data-target="#bottom" data-slide-to="1"></li>
         <li data-target="#bottom" data-slide-to="2"></li>
       </ol>
-      <div class="carousel-inner" id="bottom1Img"></div>
+      <div class="carousel-inner" id="bottom1Img"><i class="fas fa-socks fa-10x"></i></div>
       <a class="carousel-control-prev" href="#bottom" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
@@ -87,7 +110,7 @@
         <li data-target="#shoe" data-slide-to="1"></li>
         <li data-target="#shoe" data-slide-to="2"></li>
       </ol>
-      <div class="carousel-inner" id="shoe1Img"></div>
+      <div class="carousel-inner" id="shoe1Img"><i class="fas fa-shoe-prints fa-10x"></i></div>
       <a class="carousel-control-prev" href="#shoe" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
@@ -98,13 +121,14 @@
       </a>
     </div>
     {{!-- this is for accessories --}}
-    <div id="accessory" data-interval="false" class="carouselExampleIndicators  carousel mr-auto slide card" data-ride="carousel">
+    <div id="accessory" data-interval="false" class="carouselExampleIndicators  carousel mr-auto slide card"
+      data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#accessory" data-slide-to="0" class="active"></li>
         <li data-target="#accessory" data-slide-to="1"></li>
         <li data-target="#accessory" data-slide-to="2"></li>
       </ol>
-      <div class="carousel-inner" id="accessory1Img"></div>
+      <div class="carousel-inner" id="accessory1Img"><i class="fas fa-hat-wizard fa-10x"></i></div>
       <a class="carousel-control-prev" href="#accessory" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
@@ -114,8 +138,16 @@
         <span class="sr-only">Next</span>
       </a>
     </div>
-    <button id="fav-fit">your fav</button>
+    <form class="create-form">
+      <div class="form-group">
+        <input id="fitSaves" placeholder="a name for your outfit"></input>
+        <button id="fav-fit" type="button" class="btn btn-outline-secondary saveFav">My Fav</button>
+      </div>
+    </form>
   </div>
 </div>
+
+
+  
 <script type="text/javascript" src="js/members.js"></script>
 <script type="text/javascript" src="js/outfit.js"></script>

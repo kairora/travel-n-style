@@ -1,0 +1,87 @@
+.outfitSaves {
+  color: blue;
+  /* position: fixed; */
+  background-color:white;
+  font-style: italic;
+  width: 280px;
+  height: 298px;
+}
+
+.fas {
+  margin-bottom: 20px;
+}
+.saveFav {
+  width: 70px;
+}
+
+.topside{
+  margin-top: 45px;
+}
+
+.r1 {
+  text-align: left;
+}
+
+.r2 {
+  text-align: right;
+}
+
+body{
+  background-image: url("../assets/images/city/fashion.jpg");
+  font-style: italic;
+  color: black;
+  font-weight: 300;
+  }
+  .jumbtron{
+      opacity: inherit;
+  }
+  .navbar-brand{
+     color:white;
+    position: absolute;
+   right:0px;
+  }
+
+  h2{
+  color:rgb(89, 12, 160);
+  -webkit-flex:1;
+  flex:1;
+  vertical-align: top;
+  font-size: xx-large;
+  }
+  h1{
+      font-family: 'Oleo Script Swash Caps', cursive;
+  }
+  .btn{
+      -webkit-border-radius: 5;
+      -moz-border-radius: 5;
+      border-radius: 5px;
+       -webkit-box-shadow: 0px 0px 3px #666666;
+      -moz-box-shadow: 0px 0px 3px #666666;
+      box-shadow: 0px 0px 3px #666666;
+      font-family: Arial;
+      color: #ffffff;
+      font-size: 20px;
+      background: rgba(200,200,200,0.5);
+      padding: 10px 20px 10px 20px;
+      text-decoration: none;
+      font-family: 'Oswald', sans-serif;
+      text-transform: uppercase;
+  }
+  #fav-fit{
+      padding: 15px 25px;
+      font-size: 24px;
+      text-align: center;
+      cursor: pointer;
+      outline: none;
+      color: #fff;
+      background-color: #4ca8af;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 9px #999;
+    }
+    .button:hover {background-color: #3e8e41}
+    .button:active {
+      background-color: #3e8e41;
+      box-shadow: 0 5px #666;
+      transform: translateY(4px);
+    } 

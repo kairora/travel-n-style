@@ -3,6 +3,9 @@
 const db = require("../models");
 const passport = require("../config/passport");
 const axios = require("axios");
+let dDay = require("dayjs");
+let utc = require('dayjs/plugin/utc')
+dDay.extend(utc)
 module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
@@ -43,27 +46,23 @@ app.post("/api/fav",(req,res) =>{
     res.json({ok:true, sponse})
   }).catch(err=>{throw err})
 });
-
 // Route for getting some data about saved outfit to be used client side
-app.get("/api/outfit_data", (req, res) => {
-  if (!req.user) {
-    res.json({});
-  } else {
-    res.json({
-      top: req.outfits.top,
-      bottom: req.outfits.bottom,
-    });
-  }
+app.get("/api/fav/id/:id", function(req, res) {
+  console.log("in apiroute");
+  db.Outfit.findAll({
+    where: {
+      UserId: req.params.id
+    }
+  })
+  .then(function(dbPost) {
+    res.json(dbPost);
+  });
 });
-
-
   // Route for logging user out
   app.get("/logout", (req, res) => {
     req.logout();
     res.redirect("/");
   });
-
-
   // Route for getting some data about our user to be used client side
   app.get("/api/user_data", (req, res) => {
     if (!req.user) {
@@ -81,7 +80,6 @@ app.get("/api/outfit_data", (req, res) => {
       });
     }
   });
-  
   app.get("/api/weather", (req, res) => {
     let city =req.query.city;
     //declaring variables
@@ -92,7 +90,11 @@ app.get("/api/outfit_data", (req, res) => {
     if (city !== "") {
       axios.get(queryUrl + city + "&units=imperial" + "&APPID=" + appID)
         .then(function (response) {
-          console.log(response);
+          let UTC = response.data.timezone / 60;
+          // inputs UTC offset and outputs a date stored in let
+          let date = dDay().utcOffset(UTC).format("M/DD/YYYY");
+          response.data.UTCdate = date
+          console.log(response.data)
           res.json(response.data);
         }).catch(err=>console.error("city apit error:",err));
     }

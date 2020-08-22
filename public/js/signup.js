@@ -1,4 +1,9 @@
 $(document).ready(() => {
+  const why = $(".why");
+  function tellMeJokes() {
+    why.innerHTML(myjoke.getjoke());
+  }
+  tellMeJokes();
   // Getting references to our form and input
   const signUpForm = $("form.signup");
   const firstName = $("input#firstname-input");
@@ -17,7 +22,6 @@ $(document).ready(() => {
       password: passwordInput.val().trim(),
       gender: genderVal.val()
     };
-    console.log("UD: " + userData.gender);
 
     if (!userData.email || !userData.password) {
       return;
